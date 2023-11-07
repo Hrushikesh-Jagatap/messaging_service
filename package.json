@@ -1,0 +1,69 @@
+{
+  "name": "messaging_service",
+  "version": "1.0.0",
+  "description": "Messaging Service",
+  "main": "./server.js",
+  "scripts": {
+    "prd": "nodemon ./server",
+    "stg": "nodemon ./server",
+    "lcl": "nodemon -r dotenv/config ./server dotenv_config_path=./.lcl.env",
+    "lcl:prd": "nodemon -r dotenv/config ./server dotenv_config_path=./.prd.env",
+    "lcl:stg": "nodemon -r dotenv/config ./server dotenv_config_path=./.stg.env",
+    "lcl:dev": "nodemon -r dotenv/config ./server dotenv_config_path=./.dev.env",
+    "test": "NODE_OPTIONS=--max-old-space-size=8192 NODE_ENV=test mocha ./unitTests/ --recursive",
+    "migrate-latest-dev": "node -r dotenv/config ./src/scripts/migrateLatest.js dotenv_config_path=./.lcl.env",
+    "migrate-make-lcl": "node -r dotenv/config ./src/scripts/MigrateMake.js dotenv_config_path=./.lcl.env",
+    "migrate-rollback-dev": "node -r dotenv/config ./src/scripts/migrateRollback.js dotenv_config_path=./.lcl.env",
+    "migrate-make-dev": "node -r dotenv/config ./src/scripts/MigrateMake.js dotenv_config_path=./.lcl.env"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Amit Kumar",
+  "license": "ISC",
+  "private": true,
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cls-hooked": "^4.2.2",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "cuid": "^3.0.0",
+    "dotenv": "^16.0.1",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.3.0",
+    "joi": "^17.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "knex": "^2.0.0",
+    "module-alias": "^2.2.2",
+    "moment": "^2.29.3",
+    "mongoose": "^7.0.3",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "node-fetch": "^2.6.0",
+    "objection": "^3.0.1",
+    "qs": "^6.11.0",
+    "intelli-utility": "git+https://vksingh1024:ATBBUXhgcwCmM6fWY9TUqjnqjfzb28AE3506@bitbucket.org/intelliedtech/intelli-utility.git",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^8.15.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.19",
+    "prettier": "^2.6.2"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@controllers": "src/apis/controllers",
+    "@services": "src/apis/services",
+    "@db": "src/apis/db",
+    "@models": "src/apis/models",
+    "@routes": "src/apis/routes",
+    "@constants": "src/constants",
+    "@config": "src/config",
+    "@common": "src/common"
+  }
+}
